@@ -1,0 +1,119 @@
+<h2>People</h2>
+<div class="container">
+    <div class="row">
+        <div class="col-md-3">&nbsp;</div>
+        <div class="col-md-6">
+            <div class="md-form">
+                <input #searchBox id="search-box" type="text" [(ngModel)]="searchText" class="form-control" mdbInput
+                    (input)="search(searchBox.value)">
+                <label for="search">Search</label>
+            </div>
+        </div>
+        <div class="col-md-3">&nbsp;</div>
+    </div>
+    <div class="row">
+        <div class="col-md-3">&nbsp;</div>
+        <div class="col-md-6">
+            <div><span>Select a row to show details</span></div>
+            <table mdbTable class="z-depth-1" striped="true">
+                <thead class="black white-text">
+                    <tr>
+                        <th>ID</th>
+                        <th>First Name</th>
+                        <th>Last Name</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let person of people$ | async" (click)="onSelect(person)">
+                        <td>{{person.id}}</td>
+                        <td>{{person.firstName}}</td>
+                        <td>{{person.lastName}}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="col-md-3">&nbsp;</div>
+    </div>
+    <div *ngIf="selectedPerson">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-3">&nbsp;</div>
+
+                <div class="col-md-6">{{selectedPerson.firstName }} {{selectedPerson.lastName }} Details</div>
+                <div class="col-md-3">&nbsp;</div>
+            </div>
+
+
+            <div class="row">
+                <div class="col-md-3">&nbsp;</div>
+                <div class="col-md-6"><img src="..\assets\Images\{{selectedPerson.imageFileName }}" width="200"
+                        height="200" /></div>
+                <div class="col-md-3">&nbsp;</div>
+            </div>
+
+
+            <div class="row">
+                <div class="col-md-3">&nbsp;</div>
+                <div class="col-md-6"></div>
+                <div>&nbsp;</div>
+
+                <div class="col-md-3">&nbsp;</div>
+            </div>
+            <div class="row">
+                <div class="col-md-3">&nbsp;</div>
+
+                <div class="col-md-6">Age: <span>{{selectedPerson.age}}</span></div>
+
+                <div class="col-md-3">&nbsp;</div>
+            </div>
+            <div class="row">
+                <div class="col-md-3">&nbsp;</div>
+
+                <div class="col-md-6">Street: <span>{{selectedPerson.street}}</span></div>
+
+                <div class="col-md-3">&nbsp;</div>
+            </div>
+            <div class="row">
+                <div class="col-md-3">&nbsp;</div>
+
+                <div class="col-md-6">City: <span>{{selectedPerson.city}}</span></div>
+
+                <div class="col-md-3">&nbsp;</div>
+            </div>
+            <div class="row">
+                <div class="col-md-3">&nbsp;</div>
+
+                <div class="col-md-6">State: <span>{{selectedPerson.state}}</span></div>
+
+                <div class="col-md-3">&nbsp;</div>
+            </div>
+            <div class="row">
+                <div class="col-md-3">&nbsp;</div>
+
+                <div class="col-md-6">Zip: <span>{{selectedPerson.zip}}</span></div>
+
+                <div class="col-md-3">&nbsp;</div>
+            </div>
+        </div>
+
+        <div class="col-md-3">&nbsp;</div>
+        <div class="row">
+            <div class="col-md-3">&nbsp;</div>
+            <div class="col-md-6">
+                <table mdbTable class="z-depth-1" striped="true" small="true">
+                    <thead class="black white-text">
+                        <tr>
+                            <th>Interests</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let interest of interests">
+                            <td>{{interest.interest}}</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="col-md-3">&nbsp;</div>
+        </div>
+    </div>
+</div>
